@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123c50">
+  <meta name="description" content="Sail a pixel-art island chart and trade across five ports in thirty days.">
+  <title>Island Trade Tycoon · Sea Chart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to sea chart</a>
+  <header class="topbar">
+    <a class="brand" href="/map/" aria-label="Island Trade Tycoon map home"><span class="brand-mark" aria-hidden="true">⚓</span><span>ISLAND TRADE<br><strong>TYCOON</strong></span></a>
+    <div class="top-stats" aria-label="Current voyage"><span>Day <strong id="day">1 / 30</strong></span><span>Coins <strong id="cash">500</strong></span><span>Cargo <strong id="cargo">0 / 20</strong></span><span>Assets <strong id="assets">500</strong></span></div>
+    <nav class="top-actions" aria-label="Game actions"><a href="/" class="nav-link">Harbor view</a><button id="save" type="button">Save</button><button id="load" type="button">Load</button></nav>
+  </header>
+  <main id="main">
+    <div id="startup-help" class="startup-help" hidden role="alert"><strong>The Python game server is not running.</strong> Start this page with <code>START_MAP_MAC.command</code> or <code>python3 main.py --web --shipyard --map --open</code> from the deliverables folder.</div>
+    <section class="event-strip" aria-label="Island event"><div class="event-icon" aria-hidden="true">✦</div><div class="event-copy"><span id="event-day">Island news</span><strong id="event-title">The sea is calm</strong><p id="event-description">Visit a port or wait to discover what changes across the islands.</p></div><div id="event-effect" class="effect-pill">No active effect</div></section>
+    <section class="chart-section" aria-labelledby="chart-title">
+      <div class="chart-heading"><div><p class="eyebrow">Captain’s sea chart</p><h1 id="chart-title">Five islands. Thirty days.</h1></div><p class="chart-instruction">Drag the ship onto an island to sail. Select an island for route details.</p></div>
+      <div class="chart-board">
+        <div class="map-scroll" id="map-scroll"><div class="map-world" id="map-world">
+          <svg class="chart-art" viewBox="0 0 1000 620" role="img" aria-labelledby="map-title map-description" preserveAspectRatio="none">
+            <title id="map-title">Illustrated map of five trade islands</title><desc id="map-description">Coral Bay, Palm Haven, Timber Point, Spice Cove, and Harbor City surround a navigable sea. Drag the ship to a destination or select an island button.</desc>
+            <defs>
+              <pattern id="wave" width="90" height="50" patternUnits="userSpaceOnUse"><path d="M8 18h29m9 0h10M48 42h25" stroke="#a3dfd5" stroke-width="4" opacity=".28"/></pattern>
+              <pattern id="water-dots" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M4 4h3v3H4z" fill="#b8ece0" opacity=".24"/></pattern>
+              <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="5" dy="7" stdDeviation="0" flood-color="#143c4e" flood-opacity=".45"/></filter>
+            </defs>
+            <rect width="1000" height="620" fill="#2888a4"/><path d="M0 0h1000v620H0z" fill="url(#wave)"/><path d="M0 0h1000v620H0z" fill="url(#water-dots)"/>
+            <path d="M50 76h114M89 85h53M793 550h135M830 560h69M89 545h120" stroke="#d0f0dc" stroke-width="6" opacity=".36"/>
+            <path id="route-lines" fill="none" stroke="#e5e3b6" stroke-width="3" stroke-dasharray="8 12" opacity=".48"/>
+            <g id="island-art"></g>
+            <g class="compass" transform="translate(922 66)"><circle r="37" fill="#f7e6b5" stroke="#224758" stroke-width="6"/><path d="M0-30L8-8 30 0 8 8 0 30-8 8-30 0-8-8z" fill="#c26845" stroke="#224758" stroke-width="3"/><text x="0" y="-43" text-anchor="middle">N</text></g>
+          </svg>
+          <div id="island-buttons" class="island-buttons"></div>
+          <button id="ship" class="ship" type="button" aria-label="Drag your ship to another island"><svg viewBox="0 0 90 80" aria-hidden="true"><path d="M13 55h65l-11 17H27z" fill="#593b35" stroke="#222f3b" stroke-width="4"/><path d="M44 10v47M47 15l26 38H47z" fill="#fff1be" stroke="#543d39" stroke-width="4"/><path d="M38 18L20 50h18z" fill="#f8d17b" stroke="#543d39" stroke-width="4"/><path d="M14 74h64" stroke="#c1ebdd" stroke-width="4"/></svg></button>
+        </div></div>
+        <div id="route-card" class="route-card" role="region" aria-label="Selected island route" hidden></div>
+        <details class="side-panel left-panel" open><summary><span>Milestones &amp; contract</span><span class="fold" aria-hidden="true">▾</span></summary><div class="panel-body"><h2>Merchant milestones</h2><div id="milestones"></div><h2>Delivery contract</h2><div id="contract"></div></div></details>
+        <details class="side-panel right-panel" open><summary><span>Dockside trading</span><span class="fold" aria-hidden="true">▾</span></summary><div class="panel-body"><div class="port-heading"><small>Current port</small><h2 id="port">Coral Bay</h2></div><p class="panel-note">Buy low, sell high. Larger purchases can raise the unit price.</p><div id="trades"></div><div class="dock-actions"><button id="accept-contract" type="button">Take delivery</button><button id="wait" type="button">Wait 1 day</button><button id="upgrade" type="button">Upgrade cargo</button></div></div></details>
+      </div>
+      <div class="chart-status"><span class="status-dot" aria-hidden="true"></span><p id="status" role="status" aria-live="polite">Choose an island or drag your ship to sail.</p><a class="shipyard-link" href="/shipyard.html?view=map">Customize ship</a><button id="new" type="button">New voyage</button></div>
+    </section>
+    <section class="lower-panel" aria-label="Voyage details"><div class="tab-list" role="tablist" aria-label="Voyage details"><button class="active" id="tab-market" role="tab" aria-selected="true" aria-controls="panel-market" data-tab="market">Market ledger</button><button id="tab-routes" role="tab" aria-selected="false" aria-controls="panel-routes" data-tab="routes">Routes &amp; advice</button><button id="tab-manifest" role="tab" aria-selected="false" aria-controls="panel-manifest" data-tab="manifest">Ship manifest</button><button id="tab-log" role="tab" aria-selected="false" aria-controls="panel-log" data-tab="log">Captain’s log</button></div><div id="panel-market" class="tab-panel" role="tabpanel" aria-labelledby="tab-market"></div><div id="panel-routes" class="tab-panel" role="tabpanel" aria-labelledby="tab-routes" hidden></div><div id="panel-manifest" class="tab-panel" role="tabpanel" aria-labelledby="tab-manifest" hidden></div><div id="panel-log" class="tab-panel" role="tabpanel" aria-labelledby="tab-log" hidden></div></section>
+    <section id="final" class="final" hidden><h2>Voyage complete</h2><p id="final-copy"></p><button id="again" type="button">Sail again</button></section>
+  </main>
+  <footer>Island Trade Tycoon · Original COMP9001 project · Python game engine</footer>
+  <script src="../ship_style.js"></script><script src="map.js"></script><script src="app.js"></script>
+</body>
+</html>

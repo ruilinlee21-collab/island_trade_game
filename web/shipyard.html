@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head><link rel="icon" href="favicon.svg" type="image/svg+xml"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#153a4c"><title>Build Your Ship · Island Trade Tycoon</title><link rel="stylesheet" href="shipyard.css"></head>
+<body>
+<a class="skip-link" href="#main">Skip to ship builder</a>
+<header class="topbar"><a class="brand" href="/shipyard.html">⚓ <span>ISLAND TRADE<br><strong>TYCOON</strong></span></a><nav aria-label="Game views"><a href="/">Harbor View</a><a href="/map/">Map View</a></nav></header>
+<main id="main">
+  <div id="startup-help" class="startup-help" hidden role="alert">Start the Python server first: <code>python3 main.py --web --shipyard --open</code>.</div>
+  <div class="intro"><span>THE SHIPYARD</span><h1>Build your trading ship</h1><p>Choose a hull, sail, flag and sail mark. Your choices appear in both game views and are kept in your save file.</p></div>
+  <div class="builder">
+    <section class="preview-panel" aria-label="Live ship preview"><div class="preview-sky"><div class="preview-sun"></div><div class="preview-island one"></div><div class="preview-island two"></div><div class="preview-water"></div><div id="ship-preview" class="ship-preview" role="img" aria-label="Your chosen ship"></div></div><div class="preview-caption"><strong id="preview-name">Walnut hull · Ivory sail</strong><span>Live preview</span></div></section>
+    <form id="ship-form" class="option-panel"><h2>Choose your look</h2><p class="option-intro">Appearance is cosmetic. Cargo capacity, prices and sailing rules stay the same.</p><div id="option-groups"></div><fieldset class="view-choice"><legend>Start in</legend><label><input type="radio" name="view" value="map" checked> Map View</label><label><input type="radio" name="view" value="harbor"> Harbor View</label></fieldset><div class="form-actions"><button id="begin" type="submit" class="primary">Begin new voyage</button><button id="apply-current" type="button" class="secondary">Apply to current voyage</button></div><p id="shipyard-status" role="status" aria-live="polite"></p></form>
+  </div>
+</main>
+<footer>Designed at the dock · Built for a 30-day island voyage</footer>
+<script src="ship_style.js"></script><script src="shipyard.js"></script>
+</body></html>

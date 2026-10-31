@@ -1,0 +1,86 @@
+/* Pixel game skin; the detailed panels retain their existing responsive layout. */
+:root{--pixel-ink:#153446;--pixel-dark:#112b3d;--pixel-blue:#295d70;--pixel-sand:#f6dfa5;--pixel-paper:#fff6db;--pixel-gold:#efba59}
+html{scroll-behavior:smooth}
+.skip-link{position:absolute;left:12px;top:-80px;z-index:100;padding:10px 14px;background:#f5c96f;color:#173c4b;border:3px solid #173c4b;font:900 14px 'Courier New',monospace}
+.skip-link:focus{top:10px;outline:3px solid #fff;outline-offset:2px}
+body{background-color:#9dcbbd;background-image:linear-gradient(90deg,#ffffff16 1px,transparent 1px),linear-gradient(#ffffff16 1px,transparent 1px);background-size:24px 24px;color:var(--pixel-ink);font-family:Verdana,Geneva,sans-serif}
+button{touch-action:manipulation}
+.topbar{background:#152f43;border-bottom:5px solid #091c2a;min-height:75px}
+.brand{font-family:'Courier New',monospace;font-weight:900;letter-spacing:1px}
+.brand strong{font-size:23px}
+.brand-icon{border:3px solid #a5d5c2;border-radius:0;box-shadow:4px 4px 0 #071b29}
+.eyebrow{font-family:'Courier New',monospace;letter-spacing:1.2px;color:#297c82}
+.top-actions .eyebrow{color:#c0e5cb}
+.mini,.primary,.secondary,.trade-btn,.route-btn{border-radius:0;font-family:'Courier New',monospace;box-shadow:4px 4px 0 #143342;transition:transform .1s,box-shadow .1s,filter .1s}
+.mini:hover,.primary:hover,.secondary:hover,.trade-btn:hover,.route-btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 #143342}
+.mini{border:2px solid #a2c5be;background:#2f5866;color:#f4e4ba}
+.map-link{display:inline-flex;align-items:center;text-decoration:none;min-height:36px;padding:7px 10px;font-size:12px}
+.map-link:focus-visible{outline:3px solid #f5c96f;outline-offset:3px}
+.primary{border:3px solid #623f2c;background:#f5c96f;color:#263a3f;box-shadow:5px 5px 0 #663e31;font-size:16px;padding:10px 14px}
+.primary:hover{box-shadow:2px 2px 0 #663e31}
+.secondary{border:2px solid #3b6a69;background:#cfebe0;color:#174659}
+main{max-width:1400px;padding-bottom:60px}
+.game-shell{margin:22px 0 22px;padding:16px;background:#f5e3b5;border:5px solid #263b43;box-shadow:8px 8px 0 #315968;position:relative}
+.game-shell:before{content:"";position:absolute;inset:6px;border:2px solid #d09e61;pointer-events:none}
+.game-title{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:5px 8px 16px}
+.game-title-actions{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:12px}
+.game-title-actions .secondary{min-height:42px;padding:9px 12px;font-size:12px;white-space:nowrap}
+.game-title-actions .shipyard-link{display:inline-flex;align-items:center;text-decoration:none;color:#174659}
+.game-title-actions .shipyard-link:focus-visible{outline:3px solid #1c6faa;outline-offset:3px}
+.game-title .eyebrow{margin:0 0 4px}
+.game-title h1{font-family:'Courier New',monospace;font-size:clamp(25px,3vw,38px);letter-spacing:-1.5px;line-height:1.15;color:#173c4b;text-shadow:2px 2px 0 #a6c6b3}
+.game-title h1,.panel h2{text-wrap:balance}
+.game-title h1 em{color:#b7643f;font-style:normal}
+.game-title p:not(.eyebrow){font-size:12px;margin:6px 0 0;color:#546e6d}
+.stage-layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(300px,.92fr);gap:14px;position:relative;z-index:1}
+.scene-column{min-width:0}
+.scene-frame{position:relative;border:5px solid #172f3d;background:#247c9e;box-shadow:5px 5px 0 #6e957f;overflow:hidden}
+#game-scene{width:100%;height:auto;display:block;aspect-ratio:16/9;image-rendering:pixelated;image-rendering:crisp-edges}
+.scene-hud{position:absolute;inset:9px 9px auto;display:flex;justify-content:space-between;gap:8px;pointer-events:none;font:900 11px 'Courier New',monospace;color:#fff4d2;text-shadow:2px 2px 0 #193748}
+.scene-hud span{background:#193c53dc;border:2px solid #d1ae73;padding:5px 7px}
+.scene-status{margin:10px 3px 2px;padding:10px 14px;min-height:39px;background:#1b4354;border-left:6px solid #e9bc66;color:#fff2d7;font:700 13px 'Courier New',monospace;box-shadow:3px 3px 0 #789681}
+.play-dock{background:#fdf5d8;border:4px solid #335561;padding:15px;box-shadow:5px 5px 0 #6f9a8a}
+.play-dock-head h2{font:900 23px 'Courier New',monospace;color:#244757;margin:2px 0 0;letter-spacing:-1px}
+.dock-help{font-size:12px;line-height:1.4;color:#526861;margin:7px 0 12px}
+.quick-goods{display:grid;gap:7px}
+.quick-good{display:grid;grid-template-columns:32px minmax(74px,1fr) 44px 56px 56px;gap:5px;align-items:center;padding:6px;border:2px solid #b7cabc;background:#e7f1d8;min-height:53px}
+.quick-icon{font-size:20px;text-align:center}
+.quick-name{min-width:0}
+.quick-name strong{display:block;font:900 12px 'Courier New',monospace;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.quick-name small{display:block;font-size:10px;color:#4d675d;line-height:1.2}
+.quick-good input{width:100%;border:2px solid #617d76;background:#fffaf0;border-radius:0;text-align:center;padding:7px 0;font:800 12px 'Courier New',monospace;color:#153b4c}
+.quick-good button{height:38px;padding:2px;border:2px solid #143d4b;background:#347d86;color:white;box-shadow:2px 2px 0 #22454b;cursor:pointer;font:900 11px 'Courier New',monospace}
+.quick-good button:last-child{background:#ae6c4f}
+.quick-good button small{display:block;font-size:10px}
+.quick-good button:disabled,.quick-bottom button:disabled,.quick-route button:disabled{opacity:.5;cursor:not-allowed;box-shadow:none}
+.quick-route{display:grid;grid-template-columns:1fr auto;gap:7px;margin-top:14px;align-items:end}
+.quick-route label{grid-column:1/-1;font:900 11px 'Courier New',monospace;letter-spacing:1px}
+.quick-route select{min-width:0;height:42px;border:2px solid #45636a;border-radius:0;background:#fffdf0;color:#1b4050;font:700 11px 'Courier New',monospace;padding:3px 6px}
+.quick-route .primary{height:42px;font-size:11px;padding:5px 8px;white-space:nowrap;box-shadow:3px 3px 0 #663e31}
+.quick-bottom{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:13px}
+.quick-bottom .secondary{font-size:11px;padding:9px 5px;min-height:42px}
+.game-shell button:focus-visible,.game-shell input:focus-visible,.game-shell select:focus-visible,.topbar button:focus-visible,.panel button:focus-visible{outline:3px solid #1c6faa;outline-offset:3px}
+.stats{margin:0 5px 24px;border:3px solid #274857;border-radius:0;box-shadow:6px 6px 0 #739b8b;background:#f9efcf}
+.stats>div{border-right:2px solid #93ad9e;background:#f9efcf}
+.stats>div:last-child{background:#d4e7cb}
+.stats small{color:#576d67;font-family:'Courier New',monospace}
+.stats strong{font-family:'Courier New',monospace;font-size:23px;color:#173f51}
+.stats strong,.price strong,.advice-gain strong{font-variant-numeric:tabular-nums}
+.panel{background:#fff9e8;border:3px solid #426472;border-radius:0;box-shadow:5px 5px 0 #7aa494}
+.panel h2{font-family:'Courier New',monospace;font-size:22px;letter-spacing:-1px}
+.event-latest,.effect-active,.route-chip,.advice-empty,.route-card,.market-row,.tag,.progress-track{border-radius:0}
+.market-row{background:#f2f3db;border:2px solid #c0d3c1}
+.good-icon{border-radius:0;background:#d5e9cc}
+.route-card{background:#ecf1db;border:2px solid #bbcebd}
+.route-card.active{background:#cce4d5;border-color:#4e937e}
+.route-btn{background:#326978}
+.contract-panel{background:#fff1d0}
+.advisor-panel{background:#e9f0db}
+.bottom-grid,.world-grid,.dashboard{gap:18px}
+.startup-help{border-radius:0}
+#toast{border-radius:0;border:3px solid #e9bc66;background:#173747;font-family:'Courier New',monospace;z-index:20}
+footer{font-family:'Courier New',monospace}
+@media(max-width:1050px){.stage-layout{grid-template-columns:1fr}.play-dock{display:block}.quick-goods{grid-template-columns:1fr 1fr}.quick-route{grid-template-columns:minmax(0,1fr) auto}}
+@media(max-width:700px){main{padding:0 11px 35px}.game-shell{margin-top:12px;padding:10px;border-width:4px;box-shadow:5px 5px 0 #315968}.game-title{align-items:flex-start;flex-direction:column;gap:10px}.game-title-actions{justify-content:flex-start}.game-title h1{font-size:27px}.stage-layout{gap:10px}.scene-frame{border-width:3px}.scene-hud{font-size:8px;inset:5px 5px auto}.scene-hud span{padding:3px}.play-dock{padding:10px}.quick-goods{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr);margin:0 3px 20px}.stats>div{padding:10px}.stats>div:last-child{grid-column:span 2}.stats strong{font-size:19px}.quick-good{grid-template-columns:30px minmax(70px,1fr) 42px 54px 54px}.panel{padding:14px}.panel h2{font-size:20px}.route-list{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.quick-good{grid-template-columns:30px repeat(3,minmax(0,1fr));gap:6px}.quick-name{grid-column:2/4}.quick-good input{grid-column:4;grid-row:1}.quick-good button{grid-row:2;min-height:40px}.quick-good button[data-action="buy"]{grid-column:2}.quick-good button[data-action="sell"]{grid-column:3/5}.quick-route{grid-template-columns:1fr}.quick-route label{grid-column:1}.quick-route .primary{width:100%}.scene-hud{font-size:9px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.mini,.primary,.secondary,.trade-btn,.route-btn{transition:none}}
